@@ -14,6 +14,12 @@ export const WEB_SEARCH_PROVIDERS: Record<WebSearchProviderId, WebSearchProvider
     requiresApiKey: true,
     defaultBaseUrl: 'https://api.tavily.com',
   },
+  perplexity: {
+    id: 'perplexity',
+    name: 'Perplexity',
+    requiresApiKey: true,
+    defaultBaseUrl: 'https://api.perplexity.ai',
+  },
 };
 
 /**

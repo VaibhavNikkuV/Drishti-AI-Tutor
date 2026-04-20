@@ -877,12 +877,11 @@
     "clearCacheSuccess": "キャッシュをクリアしました。まもなくページが更新されます",
     "clearCacheFailed": "キャッシュのクリアに失敗しました。もう一度お試しください",
     "webSearchSettings": "ウェブ検索",
-    "webSearchApiKey": "Tavily APIキー",
-    "webSearchApiKeyPlaceholder": "Tavily APIキーを入力",
+    "webSearchApiKey": "{{provider}} APIキー",
+    "webSearchApiKeyPlaceholder": "{{provider}} APIキーを入力",
     "webSearchApiKeyPlaceholderServer": "サーバーキー設定済み、任意で上書き",
-    "webSearchApiKeyHint": "ウェブ検索用のAPIキーをtavily.comで取得してください",
+    "webSearchApiKeyHint": "{{provider}} アカウントから API キーを取得してください",
     "webSearchBaseUrl": "ベースURL",
-    "webSearchServerConfigured": "サーバー側でTavily APIキーが設定済みです",
     "optional": "任意"
   },
   "profile": {

@@ -157,13 +157,47 @@ providers:
   describe('resolveWebSearchApiKey', () => {
     it('returns client key first', async () => {
       const { resolveWebSearchApiKey } = await import('@/lib/server/provider-config');
-      expect(resolveWebSearchApiKey('client-key')).toBe('client-key');
+      expect(resolveWebSearchApiKey('tavily', 'client-key')).toBe('client-key');
     });
 
-    it('falls back to TAVILY_API_KEY env var', async () => {
+    it('falls back to TAVILY_API_KEY env var for tavily provider', async () => {
       vi.stubEnv('TAVILY_API_KEY', 'tvly-bare-env');
       const { resolveWebSearchApiKey } = await import('@/lib/server/provider-config');
-      expect(resolveWebSearchApiKey()).toBe('tvly-bare-env');
+      expect(resolveWebSearchApiKey('tavily')).toBe('tvly-bare-env');
+    });
+
+    it('falls back to PERPLEXITY_API_KEY env var for perplexity provider', async () => {
+      vi.stubEnv('PERPLEXITY_API_KEY', 'pplx-bare-env');
+      const { resolveWebSearchApiKey } = await import('@/lib/server/provider-config');
+      expect(resolveWebSearchApiKey('perplexity')).toBe('pplx-bare-env');
+    });
+
+    it('scopes env fallback to the selected provider', async () => {
+      vi.stubEnv('TAVILY_API_KEY', 'tvly-only');
+      const { resolveWebSearchApiKey } = await import('@/lib/server/provider-config');
+      expect(resolveWebSearchApiKey('perplexity')).toBe('');
+    });
+  });
+
+  describe('resolveWebSearchBaseUrl', () => {
+    it('returns client base URL when provided', async () => {
+      vi.stubEnv('PERPLEXITY_API_KEY', 'pplx-k');
+      const { resolveWebSearchBaseUrl } = await import('@/lib/server/provider-config');
+      expect(resolveWebSearchBaseUrl('perplexity', 'https://proxy.example.com')).toBe(
+        'https://proxy.example.com',
+      );
+    });
+
+    it('falls back to PERPLEXITY_BASE_URL env var', async () => {
+      vi.stubEnv('PERPLEXITY_API_KEY', 'pplx-k');
+      vi.stubEnv('PERPLEXITY_BASE_URL', 'https://custom.perplexity.test');
+      const { resolveWebSearchBaseUrl } = await import('@/lib/server/provider-config');
+      expect(resolveWebSearchBaseUrl('perplexity')).toBe('https://custom.perplexity.test');
+    });
+
+    it('returns undefined when neither client nor server URL is set', async () => {
+      const { resolveWebSearchBaseUrl } = await import('@/lib/server/provider-config');
+      expect(resolveWebSearchBaseUrl('perplexity')).toBeUndefined();
     });
   });
 

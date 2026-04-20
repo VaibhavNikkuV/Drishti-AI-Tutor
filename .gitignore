@@ -75,3 +75,5 @@ tests/generation/*.eval.result.md
 
 # Eval results
 eval/whiteboard-layout/results/
+# Added by code-review-graph
+.code-review-graph/

@@ -9,6 +9,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import { createLogger } from '@/lib/logger';
+import type { WebSearchProviderId } from '@/lib/web-search/types';
 
 const log = createLogger('ServerProviderConfig');
 
@@ -92,6 +93,7 @@ const VIDEO_ENV_MAP: Record<string, string> = {
 
 const WEB_SEARCH_ENV_MAP: Record<string, string> = {
   TAVILY: 'tavily',
+  PERPLEXITY: 'perplexity',
 };
 
 // ---------------------------------------------------------------------------
@@ -400,7 +402,7 @@ export function resolveVideoBaseUrl(
 }
 
 // ---------------------------------------------------------------------------
-// Public API — Web Search (Tavily)
+// Public API — Web Search
 // ---------------------------------------------------------------------------
 
 /** Returns server-configured web search providers (no apiKeys exposed) */
@@ -414,10 +416,20 @@ export function getServerWebSearchProviders(): Record<string, { baseUrl?: string
   return result;
 }
 
-/** Resolve Tavily API key: client key > server key > TAVILY_API_KEY env > empty */
-export function resolveWebSearchApiKey(clientKey?: string): string {
+/** Resolve web-search API key for a given provider: client key > server key > empty */
+export function resolveWebSearchApiKey(
+  providerId: WebSearchProviderId,
+  clientKey?: string,
+): string {
   if (clientKey) return clientKey;
-  const serverKey = getConfig().webSearch.tavily?.apiKey;
-  if (serverKey) return serverKey;
-  return process.env.TAVILY_API_KEY || '';
+  return getConfig().webSearch[providerId]?.apiKey || '';
+}
+
+/** Resolve web-search base URL for a given provider: client base URL > server base URL > undefined */
+export function resolveWebSearchBaseUrl(
+  providerId: WebSearchProviderId,
+  clientBaseUrl?: string,
+): string | undefined {
+  if (clientBaseUrl) return clientBaseUrl;
+  return getConfig().webSearch[providerId]?.baseUrl || undefined;
 }

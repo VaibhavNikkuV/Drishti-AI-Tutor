@@ -309,6 +309,7 @@ function GenerationPreviewContent() {
             query: currentSession.requirements.requirement,
             pdfText: currentSession.pdfText || undefined,
             apiKey: wsApiKey || undefined,
+            providerId: wsSettings.webSearchProviderId,
           }),
           signal,
         });

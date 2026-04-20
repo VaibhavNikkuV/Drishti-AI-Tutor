@@ -44,7 +44,9 @@ export function WebSearchSettings({ selectedProviderId }: WebSearchSettingsProps
         <>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label className="text-sm">{t('settings.webSearchApiKey')}</Label>
+              <Label className="text-sm">
+                {t('settings.webSearchApiKey', { provider: provider.name })}
+              </Label>
               <div className="relative">
                 <Input
                   name={`web-search-api-key-${selectedProviderId}`}
@@ -54,7 +56,9 @@ export function WebSearchSettings({ selectedProviderId }: WebSearchSettingsProps
                   autoCorrect="off"
                   spellCheck={false}
                   placeholder={
-                    isServerConfigured ? t('settings.optionalOverride') : t('settings.enterApiKey')
+                    isServerConfigured
+                      ? t('settings.optionalOverride')
+                      : t('settings.webSearchApiKeyPlaceholder', { provider: provider.name })
                   }
                   value={webSearchProvidersConfig[selectedProviderId]?.apiKey || ''}
                   onChange={(e) =>
@@ -72,7 +76,9 @@ export function WebSearchSettings({ selectedProviderId }: WebSearchSettingsProps
                   {showApiKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
               </div>
-              <p className="text-xs text-muted-foreground">{t('settings.webSearchApiKeyHint')}</p>
+              <p className="text-xs text-muted-foreground">
+                {t('settings.webSearchApiKeyHint', { provider: provider.name })}
+              </p>
             </div>
 
             <div className="space-y-2">
@@ -83,7 +89,7 @@ export function WebSearchSettings({ selectedProviderId }: WebSearchSettingsProps
                 autoCapitalize="none"
                 autoCorrect="off"
                 spellCheck={false}
-                placeholder={provider.defaultBaseUrl || 'https://api.tavily.com'}
+                placeholder={provider.defaultBaseUrl}
                 value={webSearchProvidersConfig[selectedProviderId]?.baseUrl || ''}
                 onChange={(e) =>
                   setWebSearchProviderConfig(selectedProviderId, {

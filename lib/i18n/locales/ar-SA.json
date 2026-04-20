@@ -876,12 +876,11 @@
     "clearCacheSuccess": "تم مسح الذاكرة المؤقتة، ستتم إعادة تحميل الصفحة قريبًا",
     "clearCacheFailed": "فشل مسح الذاكرة المؤقتة، يرجى المحاولة مرة أخرى",
     "webSearchSettings": "بحث الإنترنت",
-    "webSearchApiKey": "مفتاح API لـ Tavily",
-    "webSearchApiKeyPlaceholder": "أدخل مفتاح API لـ Tavily",
+    "webSearchApiKey": "مفتاح API لـ {{provider}}",
+    "webSearchApiKeyPlaceholder": "أدخل مفتاح API لـ {{provider}}",
     "webSearchApiKeyPlaceholderServer": "تم تكوين مفتاح الخادم، يمكنك التجاوز اختياريًا",
-    "webSearchApiKeyHint": "احصل على مفتاح API من tavily.com للبحث في الإنترنت",
+    "webSearchApiKeyHint": "احصل على مفتاح API من حساب {{provider}} الخاص بك",
     "webSearchBaseUrl": "العنوان الأساسي",
-    "webSearchServerConfigured": "تم تكوين مفتاح API لـ Tavily على الخادم",
     "optional": "اختياري"
   },
   "profile": {

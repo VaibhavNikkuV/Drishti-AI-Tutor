@@ -877,12 +877,11 @@
     "clearCacheSuccess": "Cache cleared, page will refresh shortly",
     "clearCacheFailed": "Failed to clear cache, please try again",
     "webSearchSettings": "Web Search",
-    "webSearchApiKey": "Tavily API Key",
-    "webSearchApiKeyPlaceholder": "Enter your Tavily API Key",
+    "webSearchApiKey": "{{provider}} API Key",
+    "webSearchApiKeyPlaceholder": "Enter your {{provider}} API Key",
     "webSearchApiKeyPlaceholderServer": "Server key configured, optionally override",
-    "webSearchApiKeyHint": "Get an API key from tavily.com for web search",
+    "webSearchApiKeyHint": "Get an API key from your {{provider}} account",
     "webSearchBaseUrl": "Base URL",
-    "webSearchServerConfigured": "Server-side Tavily API key is configured",
     "optional": "Optional"
   },
   "profile": {

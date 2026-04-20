@@ -374,6 +374,7 @@ const getDefaultWebSearchConfig = () => ({
   webSearchProviderId: 'tavily' as WebSearchProviderId,
   webSearchProvidersConfig: {
     tavily: { apiKey: '', baseUrl: '', enabled: true },
+    perplexity: { apiKey: '', baseUrl: '', enabled: false },
   } as Record<WebSearchProviderId, { apiKey: string; baseUrl: string; enabled: boolean }>,
 });
 
@@ -382,6 +383,24 @@ const getDefaultWebSearchConfig = () => ({
  */
 function hasProviderId(providerMap: Record<string, unknown>, providerId?: string): boolean {
   return typeof providerId === 'string' && providerId in providerMap;
+}
+
+/**
+ * Ensure every registered Web Search provider has a config entry.
+ * Adds empty defaults for any provider that was added after the user
+ * first persisted their settings.
+ */
+function ensureBuiltInWebSearchProviders(state: Partial<SettingsState>): void {
+  if (!state.webSearchProvidersConfig) return;
+  for (const providerId of Object.keys(WEB_SEARCH_PROVIDERS) as WebSearchProviderId[]) {
+    if (!state.webSearchProvidersConfig[providerId]) {
+      state.webSearchProvidersConfig[providerId] = {
+        apiKey: '',
+        baseUrl: '',
+        enabled: false,
+      };
+    }
+  }
 }
 
 /**
@@ -1338,7 +1357,7 @@ export const useSettingsStore = create<SettingsState>()(
     },
     {
       name: 'settings-storage',
-      version: 2,
+      version: 3,
       // Migrate persisted state
       migrate: (persistedState: unknown, version: number) => {
         const state = persistedState as Partial<SettingsState>;
@@ -1476,6 +1495,9 @@ export const useSettingsStore = create<SettingsState>()(
           delete stateRecord.webSearchIsServerConfigured;
         }
 
+        // v2 → v3: add perplexity (and any future) web-search providers to existing persisted state
+        ensureBuiltInWebSearchProviders(state);
+
         ensureValidProviderSelections(state);
 
         return state;
@@ -1488,6 +1510,7 @@ export const useSettingsStore = create<SettingsState>()(
         promoteLegacyCustomProviderBaseUrls(merged as Partial<SettingsState>);
         ensureBuiltInImageProviders(merged as Partial<SettingsState>);
         ensureBuiltInVideoProviders(merged as Partial<SettingsState>);
+        ensureBuiltInWebSearchProviders(merged as Partial<SettingsState>);
         ensureValidProviderSelections(merged as Partial<SettingsState>);
         return merged as SettingsState;
       },
