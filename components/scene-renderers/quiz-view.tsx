@@ -151,19 +151,19 @@ function QuizCover({
     <div className="w-full h-full flex flex-col items-center justify-center gap-4 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 p-6 opacity-[0.03]">
-        <PieChart className="w-52 h-52 text-violet-500" />
+        <PieChart className="w-52 h-52 text-blue-500" />
       </div>
       <div className="absolute bottom-0 left-0 p-6 opacity-[0.02]">
-        <BookOpenText className="w-40 h-40 text-violet-500 rotate-12" />
+        <BookOpenText className="w-40 h-40 text-blue-500 rotate-12" />
       </div>
 
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-        className="w-16 h-16 bg-gradient-to-br from-violet-100 to-purple-50 dark:from-violet-900/50 dark:to-purple-900/30 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-100 dark:shadow-violet-900/30 ring-1 ring-violet-200/50 dark:ring-violet-700/50"
+        className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/50 dark:to-blue-900/30 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-100 dark:shadow-blue-900/30 ring-1 ring-blue-200/50 dark:ring-blue-700/50"
       >
-        <PieChart className="w-8 h-8 text-violet-500" />
+        <PieChart className="w-8 h-8 text-blue-500" />
       </motion.div>
 
       <motion.div
@@ -183,16 +183,16 @@ function QuizCover({
         className="flex gap-5 text-sm z-10"
       >
         <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-          <div className="w-7 h-7 rounded-lg bg-violet-50 dark:bg-violet-900/30 flex items-center justify-center">
-            <BookOpenText className="w-3.5 h-3.5 text-violet-500" />
+          <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center">
+            <BookOpenText className="w-3.5 h-3.5 text-blue-500" />
           </div>
           <span>
             {questionCount} {t('quiz.questionsCount')}
           </span>
         </div>
         <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-          <div className="w-7 h-7 rounded-lg bg-violet-50 dark:bg-violet-900/30 flex items-center justify-center">
-            <PieChart className="w-3.5 h-3.5 text-violet-500" />
+          <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center">
+            <PieChart className="w-3.5 h-3.5 text-blue-500" />
           </div>
           <span>
             {t('quiz.totalPrefix')} {totalPoints} {t('quiz.pointsSuffix')}
@@ -207,7 +207,7 @@ function QuizCover({
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={onStart}
-        className="mt-1 px-8 py-2.5 bg-gradient-to-r from-violet-500 to-purple-500 text-white rounded-full font-medium shadow-lg shadow-violet-200/50 dark:shadow-violet-900/50 hover:shadow-violet-300/50 transition-shadow z-10 flex items-center gap-2"
+        className="mt-1 px-8 py-2.5 bg-gradient-to-r from-blue-500 to-blue-500 text-white rounded-full font-medium shadow-lg shadow-blue-200/50 dark:shadow-blue-900/50 hover:shadow-blue-300/50 transition-shadow z-10 flex items-center gap-2"
       >
         {t('quiz.startQuiz')}
         <ChevronRight className="w-4 h-4" />
@@ -251,10 +251,10 @@ function SingleChoiceQuestion({
                 // Default state
                 !isReview &&
                   !selected &&
-                  'border-gray-200 dark:border-gray-600 hover:border-violet-200 dark:hover:border-violet-700 hover:bg-violet-50/50 dark:hover:bg-violet-900/30',
+                  'border-gray-200 dark:border-gray-600 hover:border-blue-200 dark:hover:border-blue-700 hover:bg-blue-50/50 dark:hover:bg-blue-900/30',
                 !isReview &&
                   selected &&
-                  'border-violet-400 bg-violet-50 dark:bg-violet-900/30 ring-1 ring-violet-200 dark:ring-violet-700',
+                  'border-blue-400 bg-blue-50 dark:bg-blue-900/30 ring-1 ring-blue-200 dark:ring-blue-700',
                 // Review states
                 isReview &&
                   isCorrectOpt &&
@@ -276,7 +276,7 @@ function SingleChoiceQuestion({
                   !isReview &&
                     !selected &&
                     'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400',
-                  !isReview && selected && 'bg-violet-500 text-white',
+                  !isReview && selected && 'bg-blue-500 text-white',
                   isReview && isCorrectOpt && 'bg-emerald-500 text-white',
                   isReview && isWrong && !isCorrectOpt && 'bg-red-400 text-white',
                   isReview &&
@@ -360,10 +360,10 @@ function MultipleChoiceQuestion({
                 'flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all text-sm',
                 !isReview &&
                   !isSelected &&
-                  'border-gray-200 dark:border-gray-600 hover:border-violet-200 dark:hover:border-violet-700 hover:bg-violet-50/50 dark:hover:bg-violet-900/30',
+                  'border-gray-200 dark:border-gray-600 hover:border-blue-200 dark:hover:border-blue-700 hover:bg-blue-50/50 dark:hover:bg-blue-900/30',
                 !isReview &&
                   isSelected &&
-                  'border-violet-400 bg-violet-50 dark:bg-violet-900/30 ring-1 ring-violet-200 dark:ring-violet-700',
+                  'border-blue-400 bg-blue-50 dark:bg-blue-900/30 ring-1 ring-blue-200 dark:ring-blue-700',
                 isReview &&
                   isCorrectOpt &&
                   'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/30',
@@ -381,7 +381,7 @@ function MultipleChoiceQuestion({
                   !isReview &&
                     !isSelected &&
                     'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400',
-                  !isReview && isSelected && 'bg-violet-500 text-white',
+                  !isReview && isSelected && 'bg-blue-500 text-white',
                   isReview && isCorrectOpt && 'bg-emerald-500 text-white',
                   isReview && isWrong && 'bg-red-400 text-white',
                   isReview &&
@@ -444,7 +444,7 @@ function ShortAnswerQuestion({
             onChange={(e) => onChange(e.target.value)}
             disabled={disabled}
             placeholder={t('quiz.inputPlaceholder')}
-            className="w-full min-h-[100px] p-3 pb-10 rounded-xl border border-gray-200 dark:border-gray-600 text-sm resize-none focus:outline-none focus:border-violet-300 dark:focus:border-violet-600 focus:ring-2 focus:ring-violet-100 dark:focus:ring-violet-900/50 transition-all disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-500 dark:bg-gray-800/50 dark:text-gray-200 dark:placeholder:text-gray-500"
+            className="w-full min-h-[100px] p-3 pb-10 rounded-xl border border-gray-200 dark:border-gray-600 text-sm resize-none focus:outline-none focus:border-blue-300 dark:focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900/50 transition-all disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-500 dark:bg-gray-800/50 dark:text-gray-200 dark:placeholder:text-gray-500"
           />
           <SpeechButton
             size="sm"
@@ -470,17 +470,17 @@ function ShortAnswerQuestion({
             )}
           </div>
           {result.aiComment && (
-            <div className="flex items-start gap-2 px-3 py-2 rounded-lg bg-violet-50 dark:bg-violet-900/30 border border-violet-100 dark:border-violet-800">
-              <Sparkles className="w-4 h-4 text-violet-500 shrink-0 mt-0.5" />
+            <div className="flex items-start gap-2 px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800">
+              <Sparkles className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
               <div>
-                <p className="text-xs font-medium text-violet-600 dark:text-violet-400 mb-0.5">
+                <p className="text-xs font-medium text-blue-600 dark:text-blue-400 mb-0.5">
                   {t('quiz.aiComment')}
                 </p>
-                <p className="text-xs text-violet-600/80 dark:text-violet-400/80">
+                <p className="text-xs text-blue-600/80 dark:text-blue-400/80">
                   {result.aiComment}
                 </p>
               </div>
-              <span className="ml-auto text-xs font-bold text-violet-600 dark:text-violet-400 shrink-0">
+              <span className="ml-auto text-xs font-bold text-blue-600 dark:text-blue-400 shrink-0">
                 {result.earned}/{question.points ?? 1}
                 {t('quiz.pointsSuffix')}
               </span>
@@ -527,7 +527,7 @@ function QuestionCard({
       <div
         className={cn(
           'absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl',
-          !isReview && 'bg-violet-400',
+          !isReview && 'bg-blue-400',
           isReview && result.status === 'correct' && 'bg-emerald-400',
           isReview && result.status === 'incorrect' && 'bg-red-400',
         )}
@@ -540,7 +540,7 @@ function QuestionCard({
             className={cn(
               'w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0',
               !isReview &&
-                'bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-400',
+                'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400',
               isReview &&
                 result.status === 'correct' &&
                 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400',
@@ -822,7 +822,7 @@ export function QuizView({ questions, sceneId }: QuizViewProps) {
             {/* Header bar */}
             <div className="flex items-center justify-between px-6 py-3 border-b border-gray-100 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur shrink-0">
               <div className="flex items-center gap-2">
-                <PieChart className="w-4 h-4 text-violet-500" />
+                <PieChart className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                   {t('quiz.answering')}
                 </span>
@@ -843,7 +843,7 @@ export function QuizView({ questions, sceneId }: QuizViewProps) {
                 className={cn(
                   'px-4 py-1.5 rounded-lg text-xs font-medium transition-all',
                   allAnswered
-                    ? 'bg-gradient-to-r from-violet-500 to-purple-500 text-white shadow-sm hover:shadow-md hover:shadow-violet-200/50 dark:hover:shadow-violet-900/50 active:scale-[0.97]'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-sm hover:shadow-md hover:shadow-blue-200/50 dark:hover:shadow-blue-900/50 active:scale-[0.97]'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed',
                 )}
               >
@@ -902,7 +902,7 @@ export function QuizView({ questions, sceneId }: QuizViewProps) {
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
             >
-              <Loader2 className="w-10 h-10 text-violet-500" />
+              <Loader2 className="w-10 h-10 text-blue-500" />
             </motion.div>
             <div className="text-center">
               <p className="text-base font-semibold text-gray-700 dark:text-gray-200">
@@ -914,7 +914,7 @@ export function QuizView({ questions, sceneId }: QuizViewProps) {
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={i}
-                  className="w-2 h-2 rounded-full bg-violet-400"
+                  className="w-2 h-2 rounded-full bg-blue-400"
                   animate={{ opacity: [0.3, 1, 0.3] }}
                   transition={{
                     repeat: Infinity,
@@ -944,7 +944,7 @@ export function QuizView({ questions, sceneId }: QuizViewProps) {
               </div>
               <button
                 onClick={handleRetry}
-                className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+                className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 {t('quiz.retry')}

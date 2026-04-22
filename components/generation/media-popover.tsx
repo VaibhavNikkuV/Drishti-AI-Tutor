@@ -347,7 +347,7 @@ export function MediaPopover({ onSettingsOpen }: MediaPopoverProps) {
           className={cn(
             'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-all cursor-pointer select-none whitespace-nowrap border',
             enabledCount > 0
-              ? 'bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border-violet-200/60 dark:border-violet-700/50'
+              ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200/60 dark:border-blue-700/50'
               : 'text-muted-foreground/70 hover:text-foreground hover:bg-muted/60 border-border/50',
           )}
         >
@@ -381,7 +381,7 @@ export function MediaPopover({ onSettingsOpen }: MediaPopoverProps) {
                   <Icon className="size-3.5" />
                   <span className="hidden sm:inline">{tab.label}</span>
                   {isEnabled && !isActive && (
-                    <span className="absolute top-1 right-1 size-1.5 rounded-full bg-violet-500" />
+                    <span className="absolute top-1 right-1 size-1.5 rounded-full bg-blue-500" />
                   )}
                 </button>
               );
@@ -500,7 +500,7 @@ function TabPanel({
         <Icon
           className={cn(
             'size-4 shrink-0 transition-colors',
-            enabled ? 'text-violet-600 dark:text-violet-400' : 'text-muted-foreground/50',
+            enabled ? 'text-blue-600 dark:text-blue-400' : 'text-muted-foreground/50',
           )}
         />
         <span

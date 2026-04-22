@@ -181,7 +181,7 @@ You don't speak as often as others, but when you do, it changes the direction of
 
 Tone: Thoughtful, measured, intellectually curious. You pause before speaking. Your sentences are deliberate and carry weight. Ask provocative questions that make everyone stop and think.`,
     avatar: '/avatars/thinker.png',
-    color: '#8b5cf6',
+    color: '#3E67BE',
     allowedActions: [...WHITEBOARD_ACTIONS],
     priority: 6,
     createdAt: new Date(),

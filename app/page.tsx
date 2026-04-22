@@ -327,7 +327,7 @@ function HomePage() {
   };
 
   return (
-    <div className="min-h-[100dvh] w-full bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 flex flex-col items-center p-4 pt-16 md:p-8 md:pt-16 overflow-x-hidden">
+    <div className="min-h-[100dvh] w-full bg-gradient-to-b from-secondary to-white dark:from-background dark:to-card flex flex-col items-center p-4 pt-16 md:p-8 md:pt-16 overflow-x-hidden">
       <input
         ref={fileInputRef}
         type="file"
@@ -338,12 +338,12 @@ function HomePage() {
       {/* ═══ Top-right pill (unchanged) ═══ */}
       <div
         ref={toolbarRef}
-        className="fixed top-4 right-4 z-50 flex items-center gap-1 bg-white/60 dark:bg-gray-800/60 backdrop-blur-md px-2 py-1.5 rounded-full border border-gray-100/50 dark:border-gray-700/50 shadow-sm"
+        className="fixed top-4 right-4 z-50 flex items-center gap-1 bg-card/70 backdrop-blur-md px-2 py-1.5 rounded-full border border-border/60 shadow-sm"
       >
         {/* Language Selector */}
         <LanguageSwitcher onOpen={() => setThemeOpen(false)} />
 
-        <div className="w-[1px] h-4 bg-gray-200 dark:bg-gray-700" />
+        <div className="w-[1px] h-4 bg-border" />
 
         {/* Theme Selector */}
         <div className="relative">
@@ -351,23 +351,23 @@ function HomePage() {
             onClick={() => {
               setThemeOpen(!themeOpen);
             }}
-            className="p-2 rounded-full text-gray-400 dark:text-gray-500 hover:bg-white dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200 hover:shadow-sm transition-all"
+            className="p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-foreground hover:shadow-sm transition-all"
           >
             {theme === 'light' && <Sun className="w-4 h-4" />}
             {theme === 'dark' && <Moon className="w-4 h-4" />}
             {theme === 'system' && <Monitor className="w-4 h-4" />}
           </button>
           {themeOpen && (
-            <div className="absolute top-full mt-2 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px]">
+            <div className="absolute top-full mt-2 right-0 bg-popover border border-border rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px]">
               <button
                 onClick={() => {
                   setTheme('light');
                   setThemeOpen(false);
                 }}
                 className={cn(
-                  'w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2',
+                  'w-full px-4 py-2 text-left text-sm hover:bg-accent transition-colors flex items-center gap-2',
                   theme === 'light' &&
-                    'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400',
+                    'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
                 )}
               >
                 <Sun className="w-4 h-4" />
@@ -379,9 +379,9 @@ function HomePage() {
                   setThemeOpen(false);
                 }}
                 className={cn(
-                  'w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2',
+                  'w-full px-4 py-2 text-left text-sm hover:bg-accent transition-colors flex items-center gap-2',
                   theme === 'dark' &&
-                    'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400',
+                    'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
                 )}
               >
                 <Moon className="w-4 h-4" />
@@ -393,9 +393,9 @@ function HomePage() {
                   setThemeOpen(false);
                 }}
                 className={cn(
-                  'w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-2',
+                  'w-full px-4 py-2 text-left text-sm hover:bg-accent transition-colors flex items-center gap-2',
                   theme === 'system' &&
-                    'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400',
+                    'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
                 )}
               >
                 <Monitor className="w-4 h-4" />
@@ -405,13 +405,13 @@ function HomePage() {
           )}
         </div>
 
-        <div className="w-[1px] h-4 bg-gray-200 dark:bg-gray-700" />
+        <div className="w-[1px] h-4 bg-border" />
 
         {/* Settings Button */}
         <div className="relative">
           <button
             onClick={() => setSettingsOpen(true)}
-            className="p-2 rounded-full text-gray-400 dark:text-gray-500 hover:bg-white dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200 hover:shadow-sm transition-all group"
+            className="p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-foreground hover:shadow-sm transition-all group"
           >
             <Settings className="w-4 h-4 group-hover:rotate-90 transition-transform duration-500" />
           </button>
@@ -433,7 +433,7 @@ function HomePage() {
           style={{ animationDuration: '4s' }}
         />
         <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: '6s' }}
         />
       </div>
@@ -480,7 +480,7 @@ function HomePage() {
           transition={{ delay: 0.35 }}
           className="w-full"
         >
-          <div className="w-full rounded-2xl border border-border/60 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xl shadow-black/[0.03] dark:shadow-black/20 transition-shadow focus-within:shadow-2xl focus-within:shadow-violet-500/[0.06]">
+          <div className="w-full rounded-2xl border border-border/60 bg-card/80 backdrop-blur-xl shadow-xl shadow-primary/[0.04] dark:shadow-black/30 transition-shadow focus-within:shadow-2xl focus-within:shadow-primary/[0.08] focus-within:border-primary/30">
             {/* ── Greeting + Profile + Agents ── */}
             <div className="relative z-20 flex items-start justify-between">
               <GreetingBar />
@@ -770,7 +770,7 @@ function GreetingBar() {
           onClick={() => setOpen(true)}
         >
           <div className="shrink-0 relative">
-            <div className="size-8 rounded-full overflow-hidden ring-[1.5px] ring-border/30 group-hover:ring-violet-400/60 dark:group-hover:ring-violet-400/40 transition-all duration-300">
+            <div className="size-8 rounded-full overflow-hidden ring-[1.5px] ring-border/30 group-hover:ring-blue-400/60 dark:group-hover:ring-blue-400/40 transition-all duration-300">
               <img src={avatar} alt="" className="size-full object-cover" />
             </div>
             <div className="absolute -bottom-0.5 -right-0.5 size-3.5 rounded-full bg-white dark:bg-slate-800 border border-border/40 flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
@@ -823,7 +823,7 @@ function GreetingBar() {
                     setAvatarPickerOpen(!avatarPickerOpen);
                   }}
                 >
-                  <div className="size-8 rounded-full overflow-hidden ring-[1.5px] ring-violet-300/70 dark:ring-violet-500/40 transition-all duration-300">
+                  <div className="size-8 rounded-full overflow-hidden ring-[1.5px] ring-blue-300/70 dark:ring-blue-500/40 transition-all duration-300">
                     <img src={avatar} alt="" className="size-full object-cover" />
                   </div>
                   <motion.div
@@ -861,7 +861,7 @@ function GreetingBar() {
                       />
                       <button
                         onClick={commitName}
-                        className="shrink-0 size-5 rounded flex items-center justify-center text-violet-500 hover:bg-violet-100 dark:hover:bg-violet-900/30"
+                        className="shrink-0 size-5 rounded flex items-center justify-center text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-900/30"
                       >
                         <Check className="size-3" />
                       </button>
@@ -913,7 +913,7 @@ function GreetingBar() {
                               'size-7 rounded-full overflow-hidden bg-gray-50 dark:bg-gray-800 cursor-pointer transition-all duration-150',
                               'hover:scale-110 active:scale-95',
                               avatar === url
-                                ? 'ring-2 ring-violet-400 dark:ring-violet-500 ring-offset-0'
+                                ? 'ring-2 ring-blue-400 dark:ring-blue-500 ring-offset-0'
                                 : 'hover:ring-1 hover:ring-muted-foreground/30',
                             )}
                           >
@@ -925,7 +925,7 @@ function GreetingBar() {
                             'size-7 rounded-full flex items-center justify-center cursor-pointer transition-all duration-150 border border-dashed',
                             'hover:scale-110 active:scale-95',
                             isCustomAvatar(avatar)
-                              ? 'ring-2 ring-violet-400 dark:ring-violet-500 ring-offset-0 border-violet-300 dark:border-violet-600 bg-violet-50 dark:bg-violet-900/30'
+                              ? 'ring-2 ring-blue-400 dark:ring-blue-500 ring-offset-0 border-blue-300 dark:border-blue-600 bg-blue-50 dark:bg-blue-900/30'
                               : 'border-muted-foreground/30 text-muted-foreground/50 hover:border-muted-foreground/50',
                           )}
                           onClick={() => avatarInputRef.current?.click()}
@@ -1030,7 +1030,7 @@ function ClassroomCard({
           />
         ) : !slide ? (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="size-12 rounded-2xl bg-gradient-to-br from-violet-100 to-blue-100 dark:from-violet-900/30 dark:to-blue-900/30 flex items-center justify-center">
+            <div className="size-12 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-100 dark:from-blue-900/30 dark:to-blue-900/30 flex items-center justify-center">
               <span className="text-xl opacity-50">📄</span>
             </div>
           </div>
@@ -1103,7 +1103,7 @@ function ClassroomCard({
 
       {/* Info — outside the thumbnail */}
       <div className="mt-2.5 px-1 flex items-center gap-2">
-        <span className="shrink-0 inline-flex items-center rounded-full bg-violet-100 dark:bg-violet-900/30 px-2 py-0.5 text-[11px] font-medium text-violet-600 dark:text-violet-400">
+        <span className="shrink-0 inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/30 px-2 py-0.5 text-[11px] font-medium text-blue-600 dark:text-blue-400">
           {classroom.sceneCount} {t('classroom.slides')} · {formatDate(classroom.updatedAt)}
         </span>
         {editing ? (
@@ -1119,7 +1119,7 @@ function ClassroomCard({
               onBlur={commitRename}
               maxLength={100}
               placeholder={t('classroom.renamePlaceholder')}
-              className="w-full bg-transparent border-b border-violet-400/60 text-[15px] font-medium text-foreground/90 outline-none placeholder:text-muted-foreground/40"
+              className="w-full bg-transparent border-b border-blue-400/60 text-[15px] font-medium text-foreground/90 outline-none placeholder:text-muted-foreground/40"
             />
           </div>
         ) : (

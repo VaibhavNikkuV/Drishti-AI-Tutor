@@ -314,14 +314,14 @@ export function AgentRevealModal({ agents, open, onClose, onAllRevealed }: Agent
                       <div
                         className="absolute inset-0 rounded-2xl p-[2px]"
                         style={{
-                          background: 'linear-gradient(160deg, #6366f1, #a855f7, #6366f1)',
+                          background: 'linear-gradient(160deg, #3E67BE, #5b82d4, #3E67BE)',
                         }}
                       >
                         <div
                           className="relative flex size-full flex-col items-center justify-center rounded-[14px]"
                           style={{
                             background:
-                              'linear-gradient(145deg, #1e1b4b 0%, #312e81 40%, #1e1b4b 100%)',
+                              'linear-gradient(145deg, #1e2f5a 0%, #284e9c 40%, #1e2f5a 100%)',
                           }}
                         >
                           {/* Decorative inner border */}
@@ -352,8 +352,8 @@ export function AgentRevealModal({ agents, open, onClose, onAllRevealed }: Agent
                             <path d="M10 0 L20 10 L10 20 L0 10 Z" fill="currentColor" />
                           </svg>
                           {/* Center icon */}
-                          <Sparkles className="size-9 text-purple-300/70" />
-                          <span className="mt-1.5 text-xl font-bold text-purple-200/60">?</span>
+                          <Sparkles className="size-9 text-blue-300/70" />
+                          <span className="mt-1.5 text-xl font-bold text-blue-200/60">?</span>
                         </div>
                       </div>
                     </div>
