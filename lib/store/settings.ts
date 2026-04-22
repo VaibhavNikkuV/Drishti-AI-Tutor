@@ -620,7 +620,7 @@ export const useSettingsStore = create<SettingsState>()(
       return {
         // Initial state (use migrated data if available)
         providerId: migratedData?.providerId || 'openai',
-        modelId: migratedData?.modelId || '',
+        modelId: migratedData?.modelId || 'gpt-5.4',
         providersConfig: migratedData?.providersConfig || getDefaultProvidersConfig(),
         ttsModel: migratedData?.ttsModel || 'openai-tts',
         selectedAgentIds: migratedData?.selectedAgentIds || ['default-1', 'default-2', 'default-3'],
@@ -1357,7 +1357,7 @@ export const useSettingsStore = create<SettingsState>()(
     },
     {
       name: 'settings-storage',
-      version: 3,
+      version: 4,
       // Migrate persisted state
       migrate: (persistedState: unknown, version: number) => {
         const state = persistedState as Partial<SettingsState>;
@@ -1367,6 +1367,12 @@ export const useSettingsStore = create<SettingsState>()(
           if (state.providerId === 'openai' && state.modelId === 'gpt-4o-mini') {
             state.modelId = '';
           }
+        }
+
+        // v3 → v4: pre-select OpenAI gpt-5.4 when no model was actively chosen
+        if (version < 4 && !state.modelId) {
+          state.providerId = 'openai';
+          state.modelId = 'gpt-5.4';
         }
 
         // Ensure providersConfig has all built-in providers (also in merge below)
